@@ -1,47 +1,47 @@
-let totalRemovedItems = 0;
+let removeditems = 0;
 
 document.getElementById("add").addEventListener("click", addItem);
 document.getElementById("remove").addEventListener("click", removeItem);
 
 function addItem() {
-    let itemInput = document.getElementById("item");
-    let itemText = itemInput.value.trim();
+    let iteminput = document.getElementById("item");
+    let itemtext = iteminput.value.trim();
 
     if (itemText !== "") {
         let list = document.getElementById("list");
-        let listItem = document.createElement("li");
-        listItem.innerText = itemText;
+        let listitem = document.createElement("li");
+        listitem.innerText = itemtext;
         list.appendChild(listItem);
         applyColors(list);
     }
 
-    itemInput.value = "";
+    iteminput.value = "";
 }
 
 function removeItem() {
-    let itemInput = document.getElementById("item");
-    let itemText = itemInput.value.trim().toLowerCase();
+    let iteminput = document.getElementById("item");
+    let itemtext = iteminput.value.trim().toLowerCase();
     let list = document.getElementById("list");
     let listItems = list.getElementsByTagName("li");
 
-    let itemRemoved = false;
+    let itemremoved = false;
 
-    for (let i = 0; i < listItems.length; i++) {
-        if (listItems[i].innerText.trim().toLowerCase() === itemText) {
-            let removedItemText = listItems[i].innerText;
+    for (let i = 0; i < listitems.length; i++) {
+        if (listitems[i].innerText.trim().toLowerCase() === itemtext) {
+            let removeditemtext = listItems[i].innerText;
             list.removeChild(listItems[i]);
 
             
-            let removedTextElement = document.getElementById("removed-text");
-            if (!removedTextElement) {
-                removedTextElement = document.createElement("p");
-                removedTextElement.id = "removed-text";
-                document.body.appendChild(removedTextElement);
+            let removedtextelement = document.getElementById("removed-text");
+            if (!removedtextE\element) {
+                removedtextelement = document.createElement("p");
+                removedtextelement.id = "removed-text";
+                document.body.appendChild(removedtextelement);
             }
-            removedTextElement.innerHTML = `<b style="color: red">${removedItemText}</b> <span style="color: green">(${++totalRemovedItems} items removed)</span>`;
-            document.querySelector("h1").innerText = `My To-Do List (${totalRemovedItems} items removed)`;
+            removedtextelement.innerHTML = `<b style="color: red">${removeditemtext}</b> <span style="color: green">(${++removeditems} items removed)</span>`;
+            document.querySelector("h1").innerText = `My To-Do List (${removeditems} items removed)`;
 
-            itemRemoved = true;
+            itemremoved = true;
 
             
             applyColors(list);
@@ -49,22 +49,22 @@ function removeItem() {
         }
     }
 
-    if (!itemRemoved) {
-        alert("Item not found in the list!");
+    if (!itemremoved) {
+        alert("Item not in list!");
     }
 
-    itemInput.value = "";
+    iteminput.value = "";
 }
 
 
 function applyColors(list) {
-    let listItems = list.getElementsByTagName("li");
+    let listitems = list.getElementsByTagName("li");
 
-    for (let i = 0; i < listItems.length; i++) {
+    for (let i = 0; i < listitems.length; i++) {
         if ((i + 1) % 2 === 0) {
-            listItems[i].style.backgroundColor = "yellow";
+            listitems[i].style.backgroundClor = "yellow";
         } else {
-            listItems[i].style.backgroundColor = "white";
+            listitems[i].style.backgroundColor = "white";
         }
     }
 }
